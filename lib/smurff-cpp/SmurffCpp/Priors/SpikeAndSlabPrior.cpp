@@ -6,8 +6,8 @@
 using namespace smurff;
 using namespace Eigen;
 
-SpikeAndSlabPrior::SpikeAndSlabPrior(std::shared_ptr<BaseSession> session, uint32_t mode)
-   : NormalOnePrior(session, mode, "SpikeAndSlabPrior")
+SpikeAndSlabPrior::SpikeAndSlabPrior(std::shared_ptr<TrainTask> trainTask, uint32_t mode)
+   : NormalOnePrior(trainTask, mode, "SpikeAndSlabPrior")
 {
 
 }

@@ -4,8 +4,8 @@
 using namespace smurff;
 using namespace Eigen;
 
-ILatentPrior::ILatentPrior(std::shared_ptr<BaseSession> session, uint32_t mode, std::string name)
-   : m_session(session), m_mode(mode), m_name(name)
+ILatentPrior::ILatentPrior(std::shared_ptr<TrainTask> trainTask, uint32_t mode, std::string name)
+   : m_trainTask(trainTask), m_mode(mode), m_name(name)
 {
 
 }
@@ -21,12 +21,12 @@ void ILatentPrior::init()
 
 std::shared_ptr<const Model> ILatentPrior::model() const
 {
-   return m_session->model();
+   return m_trainTask->model();
 }
 
 std::shared_ptr<Model> ILatentPrior::model()
 {
-   return m_session->model();
+   return m_trainTask->model();
 }
 
 double ILatentPrior::predict(const PVec<> &pos) const
@@ -36,7 +36,7 @@ double ILatentPrior::predict(const PVec<> &pos) const
 
 std::shared_ptr<Data> ILatentPrior::data() const
 {
-   return m_session->data();
+   return m_trainTask->data();
 }
 
 std::shared_ptr<INoiseModel> ILatentPrior::noise()

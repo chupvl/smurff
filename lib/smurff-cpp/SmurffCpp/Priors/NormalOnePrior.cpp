@@ -4,8 +4,8 @@
 using namespace smurff;
 using namespace Eigen;
 
-NormalOnePrior::NormalOnePrior(std::shared_ptr<BaseSession> session, uint32_t mode, std::string name)
-   : ILatentPrior(session, mode, name)
+NormalOnePrior::NormalOnePrior(std::shared_ptr<TrainTask> trainTask, uint32_t mode, std::string name)
+   : ILatentPrior(trainTask, mode, name)
 {
 
 }

@@ -4,7 +4,7 @@
 
 namespace smurff {
    
-class Session;
+class TrainTask;
 class ILatentPrior;
 
 class IPriorFactory
@@ -15,7 +15,7 @@ public:
    }
 
 public:
-   virtual std::shared_ptr<ILatentPrior> create_prior(std::shared_ptr<Session> session, int mode) = 0;
+   virtual std::shared_ptr<ILatentPrior> create_prior(std::shared_ptr<TrainTask> trainTask, int mode) = 0;
 };
    
 }

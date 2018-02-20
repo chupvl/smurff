@@ -30,7 +30,7 @@ public:
    const double prior_beta_0 = 1.; //for alpha
 
 public:
-   SpikeAndSlabPrior(std::shared_ptr<BaseSession> session, uint32_t mode);
+   SpikeAndSlabPrior(std::shared_ptr<TrainTask> trainTask, uint32_t mode);
    virtual ~SpikeAndSlabPrior() {}
    void init() override;
 

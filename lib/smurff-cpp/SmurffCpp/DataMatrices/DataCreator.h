@@ -11,11 +11,11 @@ namespace smurff
    class DataCreator : public IDataCreator
    {
    private:
-      std::shared_ptr<Session> m_session;
+      std::shared_ptr<TrainTask> m_trainTask;
 
    public:
-      DataCreator(std::shared_ptr<Session> session)
-         : m_session(session)
+      DataCreator(std::shared_ptr<TrainTask> trainTask)
+         : m_trainTask(trainTask)
       {
       }
 

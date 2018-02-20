@@ -68,22 +68,22 @@ std::shared_ptr<SparseDoubleFeat> PriorFactory::side_info_config_to_sparse_featu
 
 //-------
 
-std::shared_ptr<ILatentPrior> PriorFactory::create_prior(std::shared_ptr<Session> session, int mode)
+std::shared_ptr<ILatentPrior> PriorFactory::create_prior(std::shared_ptr<TrainTask> trainTask, int mode)
 {
-   PriorTypes priorType = session->getConfig().getPriorTypes().at(mode);
+   PriorTypes priorType = trainTask->getConfig().getPriorTypes().at(mode);
 
    switch(priorType)
    {
    case PriorTypes::normal:
    case PriorTypes::default_prior:
-      return std::shared_ptr<NormalPrior>(new NormalPrior(session, -1));
+      return std::shared_ptr<NormalPrior>(new NormalPrior(trainTask, -1));
    case PriorTypes::spikeandslab:
-      return std::shared_ptr<SpikeAndSlabPrior>(new SpikeAndSlabPrior(session, -1));
+      return std::shared_ptr<SpikeAndSlabPrior>(new SpikeAndSlabPrior(trainTask, -1));
    case PriorTypes::normalone:
-      return std::shared_ptr<NormalOnePrior>(new NormalOnePrior(session, -1));
+      return std::shared_ptr<NormalOnePrior>(new NormalOnePrior(trainTask, -1));
    case PriorTypes::macau:
    case PriorTypes::macauone:
-      return create_macau_prior<PriorFactory>(session, mode, priorType, session->getConfig().getSideInfo().at(mode));
+      return create_macau_prior<PriorFactory>(trainTask, mode, priorType, trainTask->getConfig().getSideInfo().at(mode));
    default:
       {
          THROWERROR("Unknown prior: " + priorTypeToString(priorType));

@@ -36,7 +36,7 @@ public:
    double lambda_beta_b0; // Hyper-prior for lambda_beta
 
 public:
-   MacauOnePrior(std::shared_ptr<BaseSession> session, uint32_t mode)
+   MacauOnePrior(std::shared_ptr<TrainTask> session, uint32_t mode)
       : NormalOnePrior(session, mode, "MacauOnePrior")
    {
    }

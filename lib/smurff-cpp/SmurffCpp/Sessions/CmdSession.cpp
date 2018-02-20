@@ -316,6 +316,7 @@ bool CmdSession::parse_options(int argc, char* argv[])
       {
          Config config;
          fill_config(vm, config);
+
          setFromConfig(config);
          return true;
       }
@@ -394,6 +395,12 @@ void CmdSession::setFromArgs(int argc, char** argv)
 std::shared_ptr<ISession> smurff::create_cmd_session(int argc, char** argv)
 {
    std::shared_ptr<CmdSession> session(new CmdSession());
+
+   session->addTask(std::make_shared<TrainTask>());
+   //session->addTask(std::make_shared<ModelReaderTask>());
+   session->addTask(std::make_shared<PredictTask>());
+
    session->setFromArgs(argc, argv);
+
    return session;
 }

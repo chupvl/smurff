@@ -18,8 +18,8 @@ using namespace smurff;
 
 //  base class NormalPrior
 
-NormalPrior::NormalPrior(std::shared_ptr<BaseSession> session, uint32_t mode, std::string name)
-   : ILatentPrior(session, mode, name)
+NormalPrior::NormalPrior(std::shared_ptr<TrainTask> trainTask, uint32_t mode, std::string name)
+   : ILatentPrior(trainTask, mode, name)
 {
 
 }
